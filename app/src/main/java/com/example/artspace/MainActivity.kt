@@ -140,65 +140,78 @@ fun ArtSpaceLayout(modifier: Modifier = Modifier) {
                 }
             }
         }
-        Row(
+        ArtInfoCard(
+            art = artworkList[artIndex],
             modifier = Modifier
                 .weight(1f)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            prevClickHandler = { artIndex = if (artIndex < 1) maxIdx else artIndex - 1 },
+            nextClickHandler = { artIndex = if (artIndex >= maxIdx) 0 else artIndex + 1 },
+        )
+    }
+}
+
+@Composable
+private fun ArtInfoCard(
+    art: Art,
+    modifier: Modifier = Modifier,
+    prevClickHandler: () -> Unit,
+    nextClickHandler: () -> Unit,
+) {
+    Row(modifier = modifier) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Bottom
         ) {
-            Column(
+            Row(
                 modifier = Modifier
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.Start,
-                verticalArrangement = Arrangement.Bottom
+                    .fillMaxWidth()
+                    .background(Color(0xFFEAE9F2))
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color(0xFFEAE9F2))
+                Column(
+                    modifier = Modifier.padding(20.dp)
                 ) {
-                    Column(
-                        modifier = Modifier.padding(20.dp)
-                    ) {
+                    Text(
+                        text = art.title,
+                        modifier = Modifier,
+                        fontSize = 24.sp,
+                        lineHeight = 30.sp,
+                        color = Color(0xFF333333),
+                        fontWeight = FontWeight.Light,
+                        fontFamily = FontFamily.Default
+                    )
+                    Row {
                         Text(
-                            text = artworkList[artIndex].title,
-                            modifier = Modifier,
-                            fontSize = 24.sp,
-                            lineHeight = 30.sp,
+                            text = art.artist,
+                            modifier = Modifier.padding(end = 5.dp),
+                            fontSize = 18.sp,
                             color = Color(0xFF333333),
-                            fontWeight = FontWeight.Light,
+                            fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Default
                         )
-                        Row {
-                            Text(
-                                text = artworkList[artIndex].artist,
-                                modifier = Modifier.padding(end = 5.dp),
-                                fontSize = 18.sp,
-                                color = Color(0xFF333333),
-                                fontWeight = FontWeight.Bold,
-                                fontFamily = FontFamily.Default
-                            )
-                            Text(text = "${artworkList[artIndex].productionYear}")
-                        }
+                        Text(text = "${art.productionYear}")
                     }
                 }
-                Row(
-                    modifier = Modifier
-                        .padding(top = 30.dp)
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
+            }
+            Row(
+                modifier = Modifier
+                    .padding(top = 30.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Button(
+                    modifier = Modifier.width(150.dp),
+                    onClick = prevClickHandler
                 ) {
-                    Button(
-                        modifier = Modifier.width(150.dp),
-                        onClick = { artIndex = if (artIndex < 1) maxIdx else artIndex - 1 }) {
-                        Text(text = "Previous")
-                    }
-                    Button(
-                        modifier = Modifier.width(150.dp),
-                        onClick = {
-                            artIndex = if (artIndex >= maxIdx) 0 else artIndex + 1
-                        }) {
-                        Text(text = "Next")
-                    }
+                    Text(text = "Previous")
+                }
+                Button(
+                    modifier = Modifier.width(150.dp),
+                    onClick = nextClickHandler
+                ) {
+                    Text(text = "Next")
                 }
             }
         }
