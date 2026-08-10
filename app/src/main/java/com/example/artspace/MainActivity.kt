@@ -70,15 +70,15 @@ data class Art(
 
 val artworkList = listOf<Art>(
     Art(R.drawable.art1, "Still Life of Blue Rose and Other Flowers", "Owen Scott", 2012),
-    Art(R.drawable.art2, "Art title 2", "Artist name 2", 2013),
-    Art(R.drawable.art3, "Art title 3", "Artist name 3", 2014),
-    Art(R.drawable.art4, "Art title 4", "Artist name 4", 2015),
-    Art(R.drawable.art5, "Art title 5", "Artist name 5", 2020),
-    Art(R.drawable.art6, "Art title 6", "Artist name 6", 2022),
-    Art(R.drawable.art7, "Art title 7", "Artist name 7", 2023),
-    Art(R.drawable.art8, "Art title 8", "Artist name 8", 2024),
-    Art(R.drawable.art9, "Art title 9", "Artist name 9", 2025),
-    Art(R.drawable.art10, "Art title 10", "Artist name 10", 2026),
+    Art(R.drawable.art2, "Whispers of the Autumn Forest", "Elena Vasquez", 2013),
+    Art(R.drawable.art3, "Dancing Shadows on the City Wall", "Marcus Chen", 2014),
+    Art(R.drawable.art4, "Serenity in the Midnight Garden", "Priya Sharma", 2015),
+    Art(R.drawable.art5, "Echoes of a Forgotten Melody", "Liam O'Brien", 2020),
+    Art(R.drawable.art6, "Ripples of Light Across the Lake", "Yuki Tanaka", 2022),
+    Art(R.drawable.art7, "Fragments of a Dreamlike Mirage", "Sophia Moreau", 2023),
+    Art(R.drawable.art8, "Silent Conversation with the Moon", "David Kim", 2024),
+    Art(R.drawable.art9, "Blossoms Dancing in the Breeze", "Isabella Rossi", 2025),
+    Art(R.drawable.art10, "Golden Hour Over the Rolling Hills", "James Whitfield", 2026),
 )
 
 @Composable
